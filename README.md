@@ -117,6 +117,7 @@ We used **KMeans Clustering** to:
 
 ## 📸 Demo
 
+![Screenshot_18-3-2026_43924_127 0 0 1](https://github.com/user-attachments/assets/490f1597-624e-4900-a6da-ea468d7f4916)
 
 
 ---
