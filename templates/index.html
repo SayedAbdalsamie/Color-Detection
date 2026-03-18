@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Color Detection Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-icon" aria-hidden="true">◆</span>
+      <div>
+        <h1>Color Detection Lab</h1>
+        <p class="tagline">OpenCV · K-Means · Kaggle color names</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel panel-upload" aria-labelledby="upload-heading">
+      <h2 id="upload-heading" class="panel-title">1. Upload image</h2>
+      <p class="panel-desc">PNG, JPG, WebP up to 15 MB. Palette is computed once per upload.</p>
+      <label class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp" hidden />
+        <span class="drop-zone-inner">
+          <span class="drop-icon">↑</span>
+          <span class="drop-text">Drop an image here or <strong>browse</strong></span>
+        </span>
+      </label>
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="panel panel-viewer" aria-labelledby="viewer-heading">
+      <h2 id="viewer-heading" class="panel-title">2. Click a pixel</h2>
+      <p class="panel-desc">Click anywhere on the image to match the nearest named color from the dataset.</p>
+      <div class="viewer-wrap">
+        <div class="image-shell" id="imageShell" hidden>
+          <img id="previewImg" alt="Uploaded preview" crossorigin="anonymous" />
+          <div class="click-hint" id="clickHint">Click to detect color</div>
+        </div>
+        <div class="placeholder" id="placeholder">
+          <span>Upload an image to begin</span>
+        </div>
+      </div>
+    </section>
+
+    <aside class="sidebar">
+      <div class="card card-picked">
+        <h3 class="card-title">Selected pixel</h3>
+        <div class="swatch" id="swatch" aria-hidden="true"></div>
+        <dl class="meta" id="pixelMeta">
+          <dt>Name</dt>
+          <dd id="pixelName">—</dd>
+          <dt>RGB</dt>
+          <dd id="pixelRgb"><code>—</code></dd>
+          <dt>HEX</dt>
+          <dd id="pixelHex"><code>—</code></dd>
+        </dl>
+      </div>
+      <div class="card card-palette">
+        <h3 class="card-title">Top 5 dominant colors</h3>
+        <p class="card-sub">K-Means (k=5) on resized image — cached after upload</p>
+        <div class="bars" id="dominantBars"></div>
+        <ul class="palette-list" id="paletteList"></ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <span>Flask · OpenCV · scikit-learn</span>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
