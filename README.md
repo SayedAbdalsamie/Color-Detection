@@ -129,7 +129,7 @@ Feel free to fork the project and improve it.
 
 ## 📬 Contact
 
-* LinkedIn: https://linkedin.com/in/your-profile
+* LinkedIn: [https://linkedin.com/in/your-profile](https://www.linkedin.com/in/sayed-mohammed-085a94253/)
 * GitHub: https://github.com/SayedAbdalsamie
 
 ---
